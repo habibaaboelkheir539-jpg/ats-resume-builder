@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live ATS Resume Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Left Side: Input Form -->
+  <div class="editor">
+    <div class="editor-header">
+      <h2>ATS Resume Builder</h2>
+      <button class="btn btn-print" onclick="window.print()">Download PDF</button>
+    </div>
+
+    <div class="toolbar">
+      <div class="colors">
+        <span class="theme-label">Theme:</span>
+        <button class="color-btn" style="background:#1e3a8a" onclick="setAccent('#1e3a8a')" title="Navy"></button>
+        <button class="color-btn" style="background:#0f172a" onclick="setAccent('#0f172a')" title="Classic Black"></button>
+        <button class="color-btn" style="background:#065f46" onclick="setAccent('#065f46')" title="Emerald"></button>
+        <button class="color-btn" style="background:#7c2d12" onclick="setAccent('#7c2d12')" title="Burgundy"></button>
+      </div>
+      <div class="actions">
+        <button class="btn btn-sample" onclick="fillSample()">Sample Data</button>
+        <button class="btn btn-clear" onclick="clearForm()">Clear</button>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="in-name">Full Name</label>
+        <input type="text" id="in-name" placeholder="Ahmed Mohamed" oninput="updateCV()" />
+      </div>
+      <div class="form-group">
+        <label for="in-title">Job Title</label>
+        <input type="text" id="in-title" placeholder="Frontend Web Developer" oninput="updateCV()" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="in-email">Email</label>
+        <input type="email" id="in-email" placeholder="ahmed@example.com" oninput="updateCV()" />
+      </div>
+      <div class="form-group">
+        <label for="in-phone">Phone & Location</label>
+        <input type="text" id="in-phone" placeholder="+20 100 000 0000 | Cairo, Egypt" oninput="updateCV()" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="in-links">LinkedIn / GitHub / Portfolio</label>
+      <input type="text" id="in-links" placeholder="linkedin.com/in/ahmed | github.com/ahmed" oninput="updateCV()" />
+    </div>
+
+    <div class="form-group">
+      <label for="in-summary">Professional Summary</label>
+      <textarea id="in-summary" placeholder="Write a short 2-3 sentence summary about your skills and goals..." oninput="updateCV()"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="in-skills">Technical Skills (comma separated)</label>
+      <input type="text" id="in-skills" placeholder="HTML5, CSS3, JavaScript, React, Git, Tailwind CSS" oninput="updateCV()" />
+    </div>
+
+    <div class="form-group">
+      <label for="in-projects">Projects / Experience</label>
+      <textarea id="in-projects" class="projects-area" placeholder="Project Name - Tech Stack&#10;• Built a responsive web app that solved..." oninput="updateCV()"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="in-education">Education</label>
+      <textarea id="in-education" placeholder="B.Sc. in Computer Science - Cairo University (2022 - 2026)" oninput="updateCV()"></textarea>
+    </div>
+  </div>
+
+  <!-- Right Side: Live A4 Preview -->
+  <div class="preview-container">
+    <div class="resume-paper" id="resume">
+      <div class="cv-header">
+        <div class="cv-name" id="out-name">Your Full Name</div>
+        <div class="cv-title" id="out-title">Your Target Role</div>
+        <div class="cv-contact">
+          <span id="out-email">email@example.com</span>
+          <span id="out-phone">+20 100 000 0000 | City, Country</span>
+          <span id="out-links">linkedin.com/in/username | github.com/username</span>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title">Summary</div>
+        <div class="cv-text" id="out-summary">Motivated developer passionate about building clean, user-friendly web applications.</div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title">Technical Skills</div>
+        <div class="skills-list" id="out-skills">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title">Projects & Experience</div>
+        <div class="cv-text" id="out-projects">• Add your key projects and achievements on the left panel to preview them here.</div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title">Education</div>
+        <div class="cv-text" id="out-education">University Name — Degree & Graduation Year</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

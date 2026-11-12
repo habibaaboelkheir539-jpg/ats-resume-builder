@@ -1,0 +1,286 @@
+:root {
+  --accent: #1e3a8a;
+  --bg: #f1f5f9;
+  --border: #cbd5e1;
+  --text: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Left Panel: Editor --- */
+.editor {
+  width: 42%;
+  background: #ffffff;
+  padding: 24px 30px;
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.editor-header h2 {
+  font-size: 1.25rem;
+  color: var(--accent);
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.theme-label {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.color-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #94a3b8;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.color-btn:hover {
+  transform: scale(1.15);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+button.btn {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+button.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-sample {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.btn-clear {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.btn-print {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #475569;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 75px;
+}
+
+.projects-area {
+  min-height: 110px;
+}
+
+/* --- Right Panel: Live A4 Preview --- */
+.preview-container {
+  width: 58%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.resume-paper {
+  width: 210mm;
+  min-height: 297mm;
+  background: #ffffff;
+  padding: 18mm 20mm;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+.cv-header {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+
+.cv-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+
+.cv-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #475569;
+  margin-top: 2px;
+}
+
+.cv-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 0.85rem;
+  color: #475569;
+  margin-top: 8px;
+}
+
+.cv-section {
+  margin-bottom: 18px;
+}
+
+.cv-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.cv-text {
+  font-size: 0.92rem;
+  white-space: pre-line;
+  color: #334155;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.84rem;
+  font-weight: 500;
+}
+
+/* --- Print / PDF Export Rules --- */
+@media print {
+  body {
+    background: #fff;
+  }
+  .editor {
+    display: none !important;
+  }
+  .preview-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .resume-paper {
+    box-shadow: none;
+    width: 100%;
+    min-height: auto;
+    padding: 0;
+  }
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+}
+
+/* --- Responsive for Mobile / Tablet --- */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
+  .editor, .preview-container {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+  .resume-paper {
+    width: 100%;
+    min-height: auto;
+    padding: 20px;
+  }
+}
